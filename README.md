@@ -1,2 +1,2 @@
-# Rana-Wedding-Invitation
+# Rana's-Wedding-Invitation
 An Invitation To Sushant's Wedding
