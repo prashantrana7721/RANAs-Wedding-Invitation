@@ -1,21 +1,38 @@
-/**
- * @author Sarthak Jain <sarthak240498@gmail.com>
- */
+//(function ($) {
+//    "use strict";
+//      $('.sakura-falling').sakura('start', {
+//        blowAnimations: [
+//            'blow-soft-left'
+//
+//        ],                   // Horizontal movement animation names
+//        className: 'sakura', // Class name to use
+//        fallSpeed: 2.5,        // Factor for petal fall speed
+//        maxSize: 18,         // Maximum petal size
+//        minSize: 12,          // Minimum petal size
+//        newOn: 250,          // Interval after which a new petal is added
+//
+//    });
+//
+//})(jQuery);
 (function ($) {
     "use strict";
-      $('.sakura-falling').sakura('start', {
+    $('.sakura-falling').sakura('start', {
+        // Updated to use a pool of animations for a varied, cinematic drift
         blowAnimations: [
-            'blow-soft-left'
-        
-        ],                   // Horizontal movement animation names
-        className: 'sakura', // Class name to use
-        fallSpeed: 2.5,        // Factor for petal fall speed
-        maxSize: 18,         // Maximum petal size
-        minSize: 12,          // Minimum petal size
-        newOn: 250,          // Interval after which a new petal is added
-        
+            'blow-soft-left',
+            'blow-medium-left',
+            'blow-soft-right',
+            'blow-medium-right',
+            'sway-0', // Adding random sways to the horizontal movement pool
+            'sway-2',
+            'sway-4'
+        ],
+        className: 'sakura',
+        fallSpeed: 2.0,        // Slightly slower for a more graceful, high-quality look
+        maxSize: 16,         // Reduced maximum size for better depth of field
+        minSize: 9,           // Smaller minimum size (creating the "far away" petals)
+        newOn: 180,          // Creates more petals, slightly faster, for a full-page "shower"
     });
-
 })(jQuery);
 
 $(document).on('click', function(){
@@ -100,3 +117,14 @@ console.log(
     `%c शादी में जलूल जलूल आना होगा \n\n`,
     'color: yellow; background:tomato; font-size: 24pt; font-weight: bold',
 )
+
+function smoothScroll(event) {
+    event.preventDefault(); // Prevents the default jump behavior
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // This creates the "smooth" gliding effect
+    });
+
+    // We do NOT call audio.pause() here, so the music continues!
+    console.log('Gliding to the top... and the music plays on! 🎶');
+}

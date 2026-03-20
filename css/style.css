@@ -9,6 +9,7 @@
 	}
 }
 
+
 @keyframes fall {
 	0% {
 		opacity: 0.9;
@@ -336,12 +337,28 @@
 }
 
 .sakura {
+    /* 1. Cinematic Soft Pink Color with slight transparency */
+    background: rgba(255, 183, 197, 0.7); /* Soft cherry blossom pink */
+    border-radius: 12px 1px 12px 1px; /* Shapes the square div into a petal */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.4); /* Adds a soft "glow" */
+
+    /* 2. Full Background & No Interaction (Perfect Background Placement) */
+    pointer-events: none;
+    position: fixed; /* 'fixed' keeps them falling across the whole viewport as you scroll */
+    top: -10%; /* Starts slightly above the view */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* CRITICAL: This places the entire animation *behind* all text and buttons */
+}
+
+/*.sakura {
 	/* background: -webkit-linear-gradient(120deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9));
     background: linear-gradient(120deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9));*/
-	background: red;
+	/*background: red;
 	pointer-events: none;
 	position: absolute
-}
+}*/
 
 .sakura {
 	background: #674ea7;
@@ -448,6 +465,27 @@ img {
 	/* min-height:100%; */
 }
 
+.countdown-title {
+    font-family: 'Arvo', serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 15px;
+    color: #674ea7; /* Matches your theme purple */
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Optional: Add a slight pulse to the text to draw attention */
+.countdown-title {
+    animation: soft-glow 0.7s ease-in-out infinite alternate;
+}
+
+@keyframes soft-glow {
+    from { opacity: 0.8; }
+    to { opacity: 1; transform: scale(1.2); }
+}
 
 /** **/
 
@@ -503,8 +541,8 @@ body {
 }
 
 .block {
-	width: 110px;
-	height: 90px;
+	width: 100px;
+	height: 80px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
