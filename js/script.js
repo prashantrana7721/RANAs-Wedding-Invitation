@@ -35,16 +35,47 @@
     });
 })(jQuery);
 
-$(document).on('click', function(){
-    document.getElementById("my_audio").play();
-    console.log('Shaadi me zaroor aana');
+$(document).ready(function () {
+    const audio = document.getElementById("my_audio");
+
+    // Function to attempt play
+    function playMusic() {
+        audio.play().then(() => {
+            console.log("Autoplay started successfully!");
+            // Remove listeners once playing
+            $(document).off('click touchstart scroll', playMusic);
+        }).catch(error => {
+            console.log("Autoplay blocked. Waiting for user interaction...");
+        });
+    }
+
+    // 1. Try playing immediately on load
+    playMusic();
+
+    // 2. Fallback: Play on the first sign of any interaction (scroll, touch, or click)
+    $(document).on('click touchstart scroll', playMusic);
 });
 
-function pauseAudio() { 
-    document.getElementById("my_audio").pause();
-    console.log('Shaadi me pakka aana');
-    event.stopPropagation();
-};
+// Keep your pause function as is, but ensure it stops the event
+function pauseAudio(event) {
+    const audio = document.getElementById("my_audio");
+    audio.pause();
+    console.log('Music paused by user');
+    if (event && event.stopPropagation) {
+        event.stopPropagation();
+    }
+}
+
+//$(document).on('click', function(){
+//    document.getElementById("my_audio").play();
+//    console.log('Shaadi me zaroor aana');
+//});
+//
+//function pauseAudio() {
+//    document.getElementById("my_audio").pause();
+//    console.log('Shaadi me pakka aana');
+//    event.stopPropagation();
+//};
 
 // Set the date we're counting down to
 var countDownDate = new Date("Apr 30, 2026 22:00:00").getTime();
