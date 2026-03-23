@@ -773,15 +773,40 @@ a {
   }  
 
 
+.tile__img {
+    max-width: 90%;
+    height: auto;
+    object-ofit: cover;
+    display: block;      /* Ensures margin: auto works */
+    margin: 20px auto;   /* Centers the image and adds breathing room */
+
+    /* Curved Edges */
+    border-radius: 20px;
+
+    /* Elegant Shadow Effect */
+    /* offset-x | offset-y | blur-radius | spread-radius | color */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+    /* Optional: Subtle border to define the edges against the background */
+    border: 1px solid rgba(103, 78, 167, 0.1);
+
+    /* Smooth transition if you decide to add a hover effect later */
+    transition: transform 0.3s ease;
+}
+
+/* Cinematic touch: slight lift when hovering over the image */
+.tile__img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
 
 
-
-  .tile__img {
+  /*.tile__img {
 	max-width: 90%;
 	text-align: center;
 	height: auto;
 	object-fit: cover;
-  }
+  } */
 
 
   blockquote {
